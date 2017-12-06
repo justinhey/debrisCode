@@ -51,19 +51,20 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
-    testCompile 'junit:junit:4.12'
     compile project(':common')
     compile project(':function')
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
 }
 
-def getVersionCode(boolean  isRelease){
+def getVersionCode(boolean isRelease) {
 
-    if(isRelease){
+    if (isRelease) {
         //正式环境
         majorNumber * 1000000 + minorNumber * 10000 + revisionNumber
 
-    }else{
+    } else {
         //debug环境
         Integer.parseInt(new Date().format("yyMMddHHmm"))
     }
@@ -71,13 +72,13 @@ def getVersionCode(boolean  isRelease){
 
 }
 
-def getVersionName(boolean isRelease){
+def getVersionName(boolean isRelease) {
 
-    if(isRelease){
+    if (isRelease) {
         //正式环境
         majorNumber + "." + minorNumber + "." + revisionNumber + "." + revisionDescription
 
-    }else{
+    } else {
         //debug环境
         String today = new Date().format("yyMMdd")
         String time = new Date().format("HHmmss")
