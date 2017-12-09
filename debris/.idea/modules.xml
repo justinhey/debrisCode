@@ -6,7 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/debris.iml" filepath="$PROJECT_DIR$/debris.iml" />
       <module fileurl="file://$PROJECT_DIR$/function/function.iml" filepath="$PROJECT_DIR$/function/function.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module/module.iml" filepath="$PROJECT_DIR$/module/module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/moduleTest/moduleTest.iml" filepath="$PROJECT_DIR$/moduleTest/moduleTest.iml" />
     </modules>
   </component>
 </project>

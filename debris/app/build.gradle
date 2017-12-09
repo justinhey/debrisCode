@@ -20,6 +20,12 @@ android {
         versionCode getVersionCode(false)
         versionName getVersionName(false)
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
     }
 
     applicationVariants.all { variant ->
@@ -53,8 +59,12 @@ dependencies {
     })
     compile project(':common')
     compile project(':function')
+    compile project(':moduleTest')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //阿里路由框架
+    compile 'com.alibaba:arouter-api:1.2.4'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     testCompile 'junit:junit:4.12'
 }
 
