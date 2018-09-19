@@ -6,8 +6,6 @@ import android.os.Bundle;
 import com.alibaba.android.arouter.facade.annotation.Route;
 
 
-
-
 @Route(path = "/test/main")
 public class TestActivity extends AppCompatActivity {
 

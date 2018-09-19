@@ -11,10 +11,8 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 
 @Route(path = "/main/home")
@@ -26,13 +24,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        RecyclerView  rcv_main = (RecyclerView) findViewById(R.id.rcv_main);
+        RecyclerView rcv_main = (RecyclerView) findViewById(R.id.rcv_main);
 
         rcv_main.setLayoutManager(new LinearLayoutManager(this));
 
         List<String> items = new ArrayList<>();
 
         items.add("test");
+        items.add("Camera Pick");
+        items.add("MP4 Resolve");
 
         HomeAdapter adapter = new HomeAdapter(R.layout.item_main, items);
 
@@ -41,13 +41,17 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
-                ARouter.getInstance().build("/test/main").navigation();
-
+                if (position == 0){
+                    ARouter.getInstance().build("/test/main").navigation();
+                } else if (position == 1){
+                    ARouter.getInstance().build("/test/camerapick").navigation();
+                } else if (position == 2){
+                    ARouter.getInstance().build("/test/mp4_resolve").navigation();
+                }
             }
         });
 
     }
 
-	// 2017-12-10
+    // 2017-12-10
 }

@@ -2,12 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="xdrj.com.module">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true">
         <activity android:name=".TestActivity">
         </activity>
+        <activity android:name=".av.CameraPickActivity"/>
+        <activity android:name=".av.Mp4ResolveActivity"/>
     </application>
 
 </manifest>

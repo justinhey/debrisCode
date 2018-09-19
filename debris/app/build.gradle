@@ -12,7 +12,7 @@ ext.revisionDescription = (tempRevisionDescription == null || (tempRevisionDescr
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "xdrj.com.debris"
         minSdkVersion 16
