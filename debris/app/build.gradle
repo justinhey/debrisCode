@@ -11,12 +11,12 @@ ext.revisionDescription = (tempRevisionDescription == null || (tempRevisionDescr
 
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion rootProject.ext.var.compileSdkVersion
+    buildToolsVersion rootProject.ext.var.buildToolsVersion
     defaultConfig {
         applicationId "xdrj.com.debris"
-        minSdkVersion 16
-        targetSdkVersion 26
+        minSdkVersion rootProject.ext.var.minSdkVersion
+        targetSdkVersion rootProject.ext.var.targetSdkVersion
         versionCode getVersionCode(false)
         versionName getVersionName(false)
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -26,6 +26,8 @@ android {
                 arguments = [ moduleName : project.getName() ]
             }
         }
+
+        multiDexEnabled true
     }
 
     applicationVariants.all { variant ->

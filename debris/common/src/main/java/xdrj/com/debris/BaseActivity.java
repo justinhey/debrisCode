@@ -1,4 +1,4 @@
-package xdrj.com.module;
+package xdrj.com.debris;
 
 import android.support.v7.app.AppCompatActivity;
 

@@ -10,7 +10,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 
 import java.io.IOException;
 
-import xdrj.com.module.BaseActivity;
+import xdrj.com.debris.BaseActivity;
 import xdrj.com.module.R;
 
 

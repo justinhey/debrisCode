@@ -14,21 +14,29 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import xdrj.com.module.BaseActivity;
+import xdrj.com.debris.BaseActivity;
 import xdrj.com.module.R;
 
+/**
+ * @description:  使用 MediaExtractor 和 MediaMuxer API 解析和封装 mp4 文件
+ * @author:  hwh
+ * @date:  2018/9/21 17:20
+ */
 @Route(path = "/test/mp4_resolve")
 public class Mp4ResolveActivity extends BaseActivity {
 
     private static final String SDCARD_PATH = Environment.getExternalStorageDirectory().getPath();
     private MediaExtractor mMediaExtractor;
     private MediaMuxer mMediaMuxer;
+    private ProgressBar mProgressBar;
+    private volatile boolean isProcessing;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,10 +44,14 @@ public class Mp4ResolveActivity extends BaseActivity {
         checkPermission();
         setContentView(R.layout.activity_mp4_resolve);
 
+        mProgressBar = findViewById(R.id.profressbar);
         findViewById(R.id.tv_go).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gogogo();
+                mProgressBar.setVisibility(View.VISIBLE);
+                if (!isProcessing){
+                    gogogo();
+                }
             }
         });
     }
@@ -49,10 +61,18 @@ public class Mp4ResolveActivity extends BaseActivity {
             @Override
             public void run() {
                 try {
+                    isProcessing = true;
                     process();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                isProcessing = false;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mProgressBar.setVisibility(View.GONE);
+                    }
+                });
             }
         }).start();
     }
@@ -71,7 +91,7 @@ public class Mp4ResolveActivity extends BaseActivity {
         // MediaMuxer的作用是生成音频或视频文件；还可以把音频与视频混合成一个音视频文件。
 
         mMediaExtractor = new MediaExtractor();
-        mMediaExtractor.setDataSource(SDCARD_PATH + "ss.mp4");
+        mMediaExtractor.setDataSource(SDCARD_PATH + "/ss.mp4");
 
         int mVideoTrackIndex = -1;
         int framerate = 0;
